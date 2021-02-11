@@ -1,0 +1,331 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Goodfood - Блог{% endblock title %}
+
+{% block content %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'shop:index' %}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">блог</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <article class="entry single">
+                            <div class="entry-media">
+                                <div class="entry-slider owl-carousel owl-theme">
+                                    <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                    <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                    <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                </div><!-- End .entry-slider -->
+                            </div><!-- End .entry-media -->
+
+                            <div class="entry-body">
+                                <div class="entry-date">
+                                    <span class="day">22</span>
+                                    <span class="month">июня</span>
+                                </div><!-- End .entry-date -->
+
+                                <h2 class="entry-title">
+                                    Морковка
+                                </h2>
+
+                                <div class="entry-meta">
+                                    <span><i class="icon-calendar"></i>22 июня 2018 г.</span>
+                                    <span><i class="icon-user"></i>By <a href="#">Admin</a></span>
+                                    <span><i class="icon-folder-open"></i>
+                                        <a href="#">Еда</a>,
+                                        <a href="#">Напитки</a>,
+                                        <a href="#">Сладости</a>
+                                    </span>
+                                </div><!-- End .entry-meta -->
+
+                                <div class="entry-content">
+                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula.</p>
+                                    <p>Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula.
+                                    Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. Nulla aliquet turpis eget sodales scelerisque. Ut accumsan rhoncus sapien a dignissim. Sed vel ipsum nunc. Aliquam erat volutpat. Donec et dignissim elit. Etiam condimentum, ante sed rutrum auctor, quam arcu consequat massa, at gravida enim velit id nisl.</p>
+                                    <p>Nullam non felis odio. Praesent aliquam magna est, nec volutpat quam aliquet non. Cras ut lobortis massa, a fringilla dolor. Quisque ornare est at felis consectetur mollis. Aliquam vitae metus et enim posuere ornare. Praesent sapien erat, pellentesque quis sollicitudin eget, imperdiet bibendum magna. Aenean sit amet odio est.</p>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris quis est lobortis odio dignissim rutrum. Pellentesque blandit lacinia diam, a tincidunt felis tempus eget.</p>
+                                    <p>Donec egestas metus non vehicula accumsan. Pellentesque sit amet tempor nibh. Mauris in risus lorem. Cras malesuada gravida massa eget viverra. Suspendisse vitae dolor erat. Morbi id rhoncus enim. In hac habitasse platea dictumst. Aenean lorem diam, venenatis nec venenatis id, adipiscing ac massa. Nam vel dui eget justo dictum pretium a rhoncus ipsum. Donec venenatis erat tincidunt nunc suscipit, sit amet bibendum lacus posuere. Sed scelerisque, dolor a pharetra sodales, mi augue consequat sapien, et interdum tellus leo et nunc. Nunc imperdiet eu libero ut imperdiet.</p>
+                                    <p>Nunc varius ornare tortor. In dignissim quam eget quam sodales egestas. Nullam imperdiet velit feugiat, egestas risus nec, rhoncus felis. Suspendisse sagittis enim aliquet augue consequat facilisis. Nunc sit amet eleifend tellus. Etiam rhoncus turpis quam. Vestibulum eu lacus mattis, dignissim justo vel, fermentum nulla. Donec pharetra augue eget diam dictum, eu ullamcorper arcu feugiat.</p>
+                                    <p>Proin ut ante vitae magna cursus porta. Aenean rutrum faucibus augue eu convallis. Phasellus condimentum elit id cursus sodales. Vivamus nec est consectetur, tincidunt augue at, tempor libero.</p> 
+                                </div><!-- End .entry-content -->
+
+                                <div class="entry-share">
+                                    <h3>
+                                        <i class="icon-forward"></i>
+                                        Поделиться
+                                    </h3>
+
+                                    <div class="social-icons">
+                                        <a href="#" class="social-icon social-facebook" target="_blank" title="Facebook">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-twitter" target="_blank" title="Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-linkedin" target="_blank" title="Linkedin">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-gplus" target="_blank" title="Google +">
+                                            <i class="fab fa-google-plus-g"></i>
+                                        </a>
+                                        <a href="#" class="social-icon social-mail" target="_blank" title="Email">
+                                            <i class="icon-mail-alt"></i>
+                                        </a>
+                                    </div><!-- End .social-icons -->
+                                </div><!-- End .entry-share -->
+
+                                <div class="entry-author">
+                                    <h3><i class="icon-user"></i>Автор</h3>
+
+                                    <figure>
+                                        <a href="#">
+                                            <img src="{% static 'images/products/морковка.jpg' %}" alt="author">
+                                        </a>
+                                    </figure>
+
+                                    <div class="author-content">
+                                        <h4><a href="#">Иван Иванов</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab officia culpa corporis, quidem placeat minima unde vel veniam laboriosam et animi, inventore delectus, officiis doloribus ex amet illum ea suscipit!</p>
+                                    </div><!-- End .author.content -->
+                                </div><!-- End .entry-author -->
+
+                                <div class="comment-respond">
+                                    <h3>Оставить комментарий</h3>
+                                    <p>Your email address will not be published. Required fields are marked *</p>
+
+                                    <form action="#">
+                                        <div class="form-group required-field">
+                                            <label>Комментарий</label>
+                                            <textarea cols="30" rows="1" class="form-control" required></textarea>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group required-field">
+                                            <label>Имя</label>
+                                            <input type="text" class="form-control" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group required-field">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <input type="url" class="form-control">
+                                        </div><!-- End .form-group -->
+                                        
+                                        <div class="form-group-custom-control mb-3">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="save-name">
+                                                <label class="custom-control-label" for="save-name">Save my name, email, and website in this browser for the next time I comment.</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-group-custom-control -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-primary">Отправить</button>
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                </div><!-- End .comment-respond -->
+                            </div><!-- End .entry-body -->
+                        </article><!-- End .entry -->
+
+                        <div class="related-posts">
+                            <h4 class="light-title">Связанные <strong>публикации</strong></h4>
+
+                            <div class="owl-carousel owl-theme related-posts-carousel">
+                                <article class="entry">
+                                    <div class="entry-media">
+                                        <a href="{% url 'shop:blog' %}">
+                                            <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                        </a>
+                                    </div><!-- End .entry-media -->
+
+                                    <div class="entry-body">
+                                        <div class="entry-date">
+                                            <span class="day">29</span>
+                                            <span class="month">июня</span>
+                                        </div><!-- End .entry-date -->
+
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'shop:blog' %}">Мясо</a>
+                                        </h2>
+
+                                        <div class="entry-content">
+                                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
+
+                                            <a href="{% url 'shop:blog' %}" class="read-more">Подробнее <i class="icon-angle-double-right"></i></a>
+                                        </div><!-- End .entry-content -->
+                                    </div><!-- End .entry-body -->
+                                </article>
+
+                                <article class="entry">
+                                    <div class="entry-media">
+                                        <a href="{% url 'shop:blog' %}">
+                                            <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                        </a>
+                                    </div><!-- End .entry-media -->
+
+                                    <div class="entry-body">
+                                        <div class="entry-date">
+                                            <span class="day">23</span>
+                                            <span class="month">марта</span>
+                                        </div><!-- End .entry-date -->
+
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'shop:blog' %}">Пирожки</a>
+                                        </h2>
+
+                                        <div class="entry-content">
+                                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
+
+                                            <a href="{% url 'shop:blog' %}" class="read-more">Подробнее <i class="icon-angle-double-right"></i></a>
+                                        </div><!-- End .entry-content -->
+                                    </div><!-- End .entry-body -->
+                                </article>
+
+                                <article class="entry">
+                                    <div class="entry-media">
+                                        <a href="{% url 'shop:blog' %}">
+                                            <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                        </a>
+                                    </div><!-- End .entry-media -->
+
+                                    <div class="entry-body">
+                                        <div class="entry-date">
+                                            <span class="day">14</span>
+                                            <span class="month">мая</span>
+                                        </div><!-- End .entry-date -->
+
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'shop:blog' %}">Горох</a>
+                                        </h2>
+
+                                        <div class="entry-content">
+                                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
+
+                                            <a href="{% url 'shop:blog' %}" class="read-more">Подробнее <i class="icon-angle-double-right"></i></a>
+                                        </div><!-- End .entry-content -->
+                                    </div><!-- End .entry-body -->
+                                </article>
+
+                                <article class="entry">
+                                    <div class="entry-media">
+                                        <a href="{% url 'shop:blog' %}">
+                                            <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                        </a>
+                                    </div><!-- End .entry-media -->
+
+                                    <div class="entry-body">
+                                        <div class="entry-date">
+                                            <span class="day">11</span>
+                                            <span class="month">апреля</span>
+                                        </div><!-- End .entry-date -->
+
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'shop:blog' %}">Селёдка</a>
+                                        </h2>
+
+                                        <div class="entry-content">
+                                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per incep tos himens.</p>
+
+                                            <a href="{% url 'shop:blog' %}" class="read-more">Подробнее <i class="icon-angle-double-right"></i></a>
+                                        </div><!-- End .entry-content -->
+                                    </div><!-- End .entry-body -->
+                                </article>
+                            </div><!-- End .owl-carousel -->
+                        </div><!-- End .related-posts -->
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="sidebar-wrapper">
+                            <div class="widget widget-search">
+                                <form role="search" method="get" class="search-form" action="#">
+                                    <input type="search" class="form-control" placeholder="Search posts here..." name="s" required>
+                                    <button type="submit" class="search-submit" title="Search">
+                                        <i class="icon-search"></i>
+                                        <span class="sr-only">Поиск</span>
+                                    </button>
+                                </form>
+                            </div><!-- End .widget -->
+
+                            <div class="widget widget-categories">
+                                <h4 class="widget-title">Категории пкбликаций</h4>
+
+                                <ul class="list">
+                                    <li><a href="#">Еда</a></li>
+                                    <li><a href="#">Напитки</a></li>
+                                    <li><a href="#">Сладкое</a></li>
+                                </ul>
+                            </div><!-- End .widget -->
+
+                            <div class="widget">
+                                <h4 class="widget-title">Недавние публикации</h4>
+
+                                <ul class="simple-entry-list">
+                                    <li>
+                                        <div class="entry-media">
+                                            <a href="{% url 'shop:blog' %}">
+                                                <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                            </a>
+                                        </div><!-- End .entry-media -->
+                                        <div class="entry-info">
+                                            <a href="{% url 'shop:blog' %}">Сосискм</a>
+                                            <div class="entry-meta">
+                                                08 апреля 2018 г.
+                                            </div><!-- End .entry-meta -->
+                                        </div><!-- End .entry-info -->
+                                    </li>
+
+                                    <li>
+                                        <div class="entry-media">
+                                            <a href="{% url 'shop:blog' %}">
+                                                <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
+                                            </a>
+                                        </div><!-- End .entry-media -->
+                                        <div class="entry-info">
+                                            <a href="{% url 'shop:blog' %}">Сардельки</a>
+                                            <div class="entry-meta">
+                                                23 марта 2016 г.
+                                            </div><!-- End .entry-meta -->
+                                        </div><!-- End .entry-info -->
+                                    </li>
+                                </ul>
+                            </div><!-- End .widget -->
+
+                            <div class="widget">
+                                <h4 class="widget-title">Облако тэгов</h4>
+
+                                <div class="tagcloud">
+                                    <a href="#">еда</a>
+                                    <a href="#">водка</a>
+                                    <a href="#">колбаса</a>
+                                    <a href="#">майонез</a>
+                                    <a href="#">горчица</a>
+                                </div><!-- End .tagcloud -->
+                            </div><!-- End .widget -->
+
+                            <div class="widget">
+                                <h4 class="widget-title">Архив</h4>
+
+                                <ul class="list">
+                                    <li><a href="#">Апрель 2018</a></li>
+                                    <li><a href="#">Март 2018</a></li>
+                                    <li><a href="#">Февраль 2018</a></li>
+                                </ul>
+                            </div><!-- End .widget -->
+
+                        </div><!-- End .sidebar-wrapper -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+        </main><!-- End .main -->
+{% endblock content %}
