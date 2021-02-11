@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Goodfood - Логин{% endblock title %}
+
+{% block content %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Логин</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav>
+
+            <div class="page-header">
+                <div class="container">
+                    <h1>Войти или создать учетную запись</h1>
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="heading">
+                            <h2 class="title">Войти</h2>
+                            <p>Если у Вас есть учетная запись, войдите.</p>
+                        </div><!-- End .heading -->
+
+                        <form action="#">
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                            <input type="password" class="form-control" placeholder="Password" required>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary">Войти</button>
+                                <a href="#" class="forget-pass"> Забыли пароль?</a>
+                            </div><!-- End .form-footer -->
+                        </form>
+                    </div><!-- End .col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="heading">
+                            <h2 class="title">Создать учетную запись</h2>
+                            <p></p>
+                        </div><!-- End .heading -->
+
+                        <form action="#">
+                            <input type="text" class="form-control" placeholder="First Name" required>
+                            <input type="text" class="form-control" placeholder="Middle Name" required>
+                            <input type="text" class="form-control" placeholder="Last Name" required>
+
+                            <h2 class="title mb-2">Информация для входа</h2>
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                            <input type="password" class="form-control" placeholder="Password" required>
+                            <input type="password" class="form-control" placeholder="Confirm Password" required>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="newsletter-signup">
+                                <label class="custom-control-label" for="newsletter-signup">Получать письма</label>
+                            </div><!-- End .custom-checkbox -->
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary">Создать учетную запись</button>
+                            </div><!-- End .form-footer -->
+                        </form>
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </main><!-- End .main -->
+{% endblock content %}

@@ -1,0 +1,105 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}Goodfood - Кабинет{% endblock title %}
+
+{% block content %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'shop:index' %}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Личный кабинет</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-lg-last dashboard-content">
+                        <h2>Мой кабинет</h2>
+
+                        <div class="alert alert-success" role="alert">
+                            Привет, <strong>Покупатель!</strong> В своём личном кабинете Вы можете просматривать и редактировать личную информацию.
+                        </div><!-- End .alert -->
+
+                        <div class="mb-4"></div><!-- margin -->
+
+                        <h3>Личная информация</h3>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Контакты
+                                        <a href="#" class="card-edit">Редактировать</a>
+                                    </div><!-- End .card-header -->
+
+                                    <div class="card-body">
+                                        <p>
+                                            Иван Иванов<br>
+                                            ivanov@gmail.com<br>
+                                            <a href="#">Изменить пароль</a>
+                                        </p>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card -->
+                            </div><!-- End .col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Письма
+                                        <a href="#" class="card-edit">Редактировать</a>
+                                    </div><!-- End .card-header -->
+
+                                    <div class="card-body">
+                                        <p>
+                                            У Вас нет писем
+                                        </p>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card -->
+                            </div><!-- End .col-md-6 -->
+                        </div><!-- End .row -->
+
+                        <div class="card">
+                            <div class="card-header">
+                                Адреса
+                                <a href="#" class="card-edit">Редактировать</a>
+                            </div><!-- End .card-header -->
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="">Для счетов</h4>
+                                        <address>
+                                            У Вас нет адресов.<br>
+                                            <a href="#">Редактировать</a>
+                                        </address>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="">Для доставки</h4>
+                                        <address>
+                                            У Вас нет адресов.<br>
+                                            <a href="#">Редактировать</a>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div><!-- End .card-body -->
+                        </div><!-- End .card -->
+                    </div><!-- End .col-lg-9 -->
+
+                    <aside class="sidebar col-lg-3">
+                        <div class="widget widget-dashboard">
+                            <h3 class="widget-title">Моя учетная запись</h3>
+
+                            <ul class="list">
+                                <li class="active"><a href="#">Учетная запись</a></li>
+                                <li><a href="#">Личная информация</a></li>
+                                <li><a href="#">Адреса</a></li>
+                                <li><a href="#">Заказы</a></li>
+                            </ul>
+                        </div><!-- End .widget -->
+                    </aside><!-- End .col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </main><!-- End .main -->
+{% endblock content %}
