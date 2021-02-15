@@ -173,23 +173,26 @@
         <main class="home main">
             <section class="svg-container svg-bottom">
                 <div class="home-slider owl-carousel owl-carousel-lazy owl-theme">
+                    {% for element in slider_list %}
                     <div class="home-slide" class="owl-lazy">
                         <img class="owl-lazy" src="{% static 'images/lazy.png' %}" data-src="" alt="slider image">
-                        <img src="{% static 'images/slider/slide1.jpg' %}">
+                        {% if forloop.counter|divisibleby:2 %}
+                            <img src="{% static 'images/slider/slide2.jpg' %}">
+                        {% else %}
+                            <img src="{% static 'images/slider/slide1.jpg' %}">
+                        {% endif %}
                         <div class="home-slide-content">
                             <div class="container">
-                                <a href="{% url 'shop:product' %}" class="slide-image"><img src="{% static 'assets/images/products/морковка.jpg' %}"></a>
+                                <a href="{% url 'shop:product' %}" class="slide-image"><img src="{% static 'images/products/' %}{{ element.image_set.first.image.name }}"></a>
                                 <div class="slide-details">
-                                    <a href="{% url 'shop:product' %}" class="product-title">МОРКОВКА</a>
+                                    <a href="{% url 'shop:product' %}" class="product-title">{{ element.name }}</a>
                                     <div class="product-details">
                                         <div class="sales-panel">
                                             <div class="sales-info">
-                                                <span>купить сейчас</span>
-                                                <h4>скидка 30%</h4>
+                                                <h4>купить сейчас</h4>
                                             </div>
                                             <div class="price-box">
-                                                <span class="old-price">59 руб.</span>
-                                                <span class="product-price">39 руб.</span>
+                                                <span class="product-price">{{ element.price }}</span>
                                             </div>
                                         </div>
                                         <button class="btn">КУПИТЬ</button>
@@ -198,31 +201,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="home-slide" class="owl-lazy">
-                        <img class="owl-lazy" src="{% static 'images/lazy.png' %}" data-src="" alt="slider image">
-                        <img src="{% static 'images/slider/slide2.jpg' %}">
-                        <div class="home-slide-content">
-                            <div class="container">
-                                <div class="slide-details">
-                                    <a href="{% url 'shop:product' %}" class="product-title">МЯСО</a>
-                                    <div class="product-details">
-                                        <div class="sales-panel">
-                                            <div class="sales-info">
-                                                <span>купить сейчас</span>
-                                                <h4>скидка 50%</h4>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="old-price">399 руб.</span>
-                                                <span class="product-price">198 руб.</span>
-                                            </div>
-                                        </div>
-                                        <button class="btn">КУПИТЬ</button>
-                                    </div>
-                                </div>
-                                <a href="{% url 'shop:product' %}" class="slide-image"><img src="{% static 'images/products/мясо.jpg' %}"></a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </section>
 
@@ -230,15 +210,13 @@
                 <div class="product-panel">
                     <h2 class="section-title">ИЗБРАННЫЕ ТОВАРЫ</h2>
                     <div class="row row-sm w-100">
+                        {% for element in chosen_list %}
                         <div class="col-6 col-md-4">
                             <div class="product-default inner-quickview inner-icon">
                                 <figure>
                                     <a href="{% url 'shop:product' %}">
-                                        <img src="{% static 'images/products/морковка.jpg' %}">
+                                        <img src="{% static 'images/products/' %}{{ element.image_set.first.image.name }}">
                                     </a>
-                                    <div class="label-group">
-                                        <span class="product-label label-cut">скидка 30%</span>
-                                    </div>
                                     <div class="btn-icon-group">
                                         <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
                                     </div>
@@ -246,92 +224,19 @@
                                 </figure>
                                 <div class="product-details">
                                     <div class="category-list">
-                                        <a href="{% url 'shop:catalog' %}" class="product-category">ОВОЩИ-ФРУКТЫ</a>
+                                        <a href="{% url 'shop:catalog' %}" class="product-category">{{ element.category }}</a>
                                     </div>
                                     <h2 class="product-title">
-                                        <a href="{% url 'shop:product' %}">Морковка</a>
+                                        <a href="{% url 'shop:product' %}">{{ element.name }}</a>
                                     </h2>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
                                     <div class="price-box">
-                                        <span class="old-price">59.00</span>
-                                        <span class="product-price">49.00</span>
+                                        <span class="product-price">{{ element.price }}</span>
                                     </div><!-- End .price-box -->
                                 </div><!-- End .product-details -->
                             </div>
                         </div>
-                        <div class="col-6 col-md-4">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="{% url 'shop:product' %}">
-                                        <img src="{% static 'images/products/мясо.jpg' %}">
-                                    </a>
-                                    <div class="label-group">
-                                        <span class="product-label label-cut">скидка 27%</span>
-                                    </div>
-                                    <div class="btn-icon-group">
-                                        <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
-                                    </div>
-                                    <a href="{% url 'shop:product' %}" class="btn-quickview" title="Quick View">Подробнее</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-list">
-                                        <a href="{% url 'shop:catalog' %}" class="product-category">МЯСО-РЫБА</a>
-                                    </div>
-                                    <h2 class="product-title">
-                                        <a href="{% url 'shop:product' %}">Мясо</a>
-                                    </h2>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="old-price">59.00</span>
-                                        <span class="product-price">49.00</span>
-                                    </div><!-- End .price-box -->
-                                </div><!-- End .product-details -->
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="product-default inner-quickview inner-icon">
-                                <figure>
-                                    <a href="{% url 'shop:product' %}">
-                                        <img src="{% static 'images/products/пирожки.jpeg' %}">
-                                    </a>
-                                    <div class="label-group">
-                                        <span class="product-label label-cut">скидка 27%</span>
-                                    </div>
-                                    <div class="btn-icon-group">
-                                        <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
-                                    </div>
-                                    <a href="{% url 'shop:product' %}" class="btn-quickview" title="Quick View">Подробнее</a>
-                                </figure>
-                                <div class="product-details">
-                                    <div class="category-list">
-                                        <a href="{% url 'shop:catalog' %}" class="product-category">КОНДИТЕРСКИЕ ИЗДЕЛИЯ</a>
-                                    </div>
-                                    <h2 class="product-title">
-                                        <a href="{% url 'shop:product' %}">Пирожки</a>
-                                    </h2>
-                                    <div class="ratings-container">
-                                        <div class="product-ratings">
-                                            <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div><!-- End .product-ratings -->
-                                    </div><!-- End .product-container -->
-                                    <div class="price-box">
-                                        <span class="old-price">59.00</span>
-                                        <span class="product-price">49.00</span>
-                                    </div><!-- End .price-box -->
-                                </div><!-- End .product-details -->
-                            </div>
-                        </div>
+                        {% endfor %}
+
             </section>
         </main><!-- End .main -->
         {% endblock content %}

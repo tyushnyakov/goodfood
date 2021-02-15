@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Product
 
 
 def index(request):
-    return render(request, 'index.html')
+    data = {
+        'slider_list': Product.objects.filter(slider=True),
+        'chosen_list': Product.objects.filter(chosen=True),
+    }
+    return render(request, 'index.html', context=data)
 
 
 def catalog(request):
