@@ -75,7 +75,7 @@
                             <div class="col-6 col-md-4">
                                 <div class="product-default inner-quickview inner-icon">
                                     <figure>
-                                        <a href="{% url 'shop:index' %}">
+                                        <a href="{% url 'shop:product' element.id %}">
                                             <img src="{{ element.image_set.first.image.url }}">
                                         </a>
                                         <div class="btn-icon-group">

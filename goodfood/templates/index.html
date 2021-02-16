@@ -65,11 +65,11 @@
                                                 <div class="col-lg-2">
                                                     
                                                     <ul class="submenu">
-                                                        <li><a href="{% url 'shop:index' %}">ОВОЩИ-ФРУКТЫ</a></li>
-                                                        <li><a href="{% url 'shop:index' %}">МЯСО-РЫБА</a></li>
-                                                        <li><a href="{% url 'shop:index' %}">БАКАЛЕЯ</a></li>
-                                                        <li><a href="{% url 'shop:index' %}">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
-                                                        <li><a href="{% url 'shop:index' %}">НАПИТКИ</a></li>
+                                                        <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
+                                                        <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
+                                                        <li><a href="{% url 'shop:catalog' 3 %}">БАКАЛЕЯ</a></li>
+                                                        <li><a href="{% url 'shop:catalog' 4 %}">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
+                                                        <li><a href="{% url 'shop:catalog' 5 %}">НАПИТКИ</a></li>
                                                     </ul>
                                                 </div><!-- End .col-lg-4 -->
 
@@ -224,7 +224,7 @@
                                 </figure>
                                 <div class="product-details">
                                     <div class="category-list">
-                                        <a href="{% url 'shop:catalog' %}" class="product-category">{{ element.category }}</a>
+                                        <a href="{% url 'shop:catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                     </div>
                                     <h2 class="product-title">
                                         <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
@@ -285,11 +285,11 @@
                                 <div class="widget-content row row-sm ul-separate">
                                     <div class="col-lg-4">
                                         <ul>
-                                            <li><a href="#">ОВОЩИ-ФРУКТЫ</a></li>
-                                            <li><a href="#">МЯСО-РЫБА</a></li>
-                                            <li><a href="#">БАКАЛЕЯ</a></li>
-                                            <li><a href="#">КОНДИТЕРСКИЕ ИЗДЕЛИЯ</a></li>
-                                            <li><a href="#">НАПИТКИ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
+                                            <li><a href="{% url 'shop:catalog' 3 %}">БАКАЛЕЯ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 4 %}">КОНДИТЕРСКИЕ ИЗДЕЛИЯ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 5 %}">НАПИТКИ</a></li>
                                         </ul>
                                     </div>
                                 </div>

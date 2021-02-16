@@ -11,8 +11,12 @@ def index(request):
     return render(request, 'index.html', context=data)
 
 
-def catalog(request):
-    return render(request, 'catalog.html')
+def catalog(request, category_id=None):
+    if category_id:
+        products = Product.objects.filter(category_id=category_id)
+    else:
+        products = Product.objects.all()
+    return render(request, 'catalog.html', {"products": products})
 
 
 def blog(request):
@@ -21,7 +25,8 @@ def blog(request):
 
 def product(request, product_id):
     product = Product.objects.get(id=product_id)
-    similar_products = Product.objects.filter(category=product.category)
+    similar_products = Product.objects.filter(category=product.category)\
+        .exclude(id=product_id).order_by('chosen')
     return render(request, 'product.html', {'product': product,
                                             'similar_products': similar_products})
 

@@ -51,44 +51,36 @@
                         </nav>
 
                         <div class="row row-sm">
+                            {% for element in products %}
                             <div class="col-6 col-md-4 col-lg-3">
                                 <div class="product-default inner-quickview inner-icon">
                                     <figure>
-                                        <a href="{% url 'shop:product' %}">
-                                            <img src="{% static 'images/products/морковка.jpg' %}">
+                                        <a href="{% url 'shop:product' element.id %}">
+                                            <img src="{{ element.image_set.first.image.url }}">
                                         </a>
-                                        <div class="label-group">
-                                            <span class="product-label label-cut">скидка 30%</span>
-                                        </div>
+
                                         <div class="btn-icon-group">
                                             <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
                                         </div>
-                                        <a href="{% url 'shop:product' %}" class="btn-quickview" title="Quick View">Подробнее</a>
+                                        <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
                                     </figure>
                                     <div class="product-details">
                                         <div class="category-wrap">
                                             <div class="category-list">
-                                                <a href="{% url 'shop:catalog' %}" class="product-category">ОВОЩИ-ФРУКТЫ</a>
+                                                <a href="{% url 'shop:catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                             </div>
                                             <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
                                         </div>
                                         <h2 class="product-title">
-                                            <a href="{% url 'shop:product' %}">Морковка</a>
+                                            <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
                                         </h2>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div><!-- End .product-ratings -->
-                                        </div><!-- End .product-container -->
                                         <div class="price-box">
-                                            <span class="old-price">59.00</span>
-                                            <span class="product-price">49.00</span>
+                                            <span class="product-price">{{ element.price }}</span>
                                         </div><!-- End .price-box -->
                                     </div><!-- End .product-details -->
                                 </div>
                             </div>
-                            
+                            {% endfor %}
                         </div>
 
                         <nav class="toolbox toolbox-pagination">
@@ -125,63 +117,11 @@
                                 <div class="collapse show" id="widget-body-2">
                                     <div class="widget-body">
                                         <ul class="cat-list">
-                                            <li><a href="#">ОВОЩИ-ФРУКТЫ</a></li>
-                                            <li><a href="#">МЯСО-РЫБА</a></li>
-                                            <li><a href="#">БАКАЛЕЯ</a></li>
-                                            <li><a href="#">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
-                                            <li><a href="#">НАПИТКИ</a></li>
-                                        </ul>
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="{% url 'shop:catalog' %}" role="button" aria-expanded="true" aria-controls="widget-body-3">Цена</a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-body-3">
-                                    <div class="widget-body">
-                                        <form action="#">
-                                            <div class="price-slider-wrapper">
-                                                <div id="price-slider"></div><!-- End #price-slider -->
-                                            </div><!-- End .price-slider-wrapper -->
-
-                                            <div class="filter-price-action">
-                                                <div class="filter-price-text">
-                                                    Цена:
-                                                    <span id="filter-price-range"></span>
-                                                </div><!-- End .filter-price-text -->
-                                                <button type="submit" class="btn btn-primary">Фмльтр</button>
-                                            </div><!-- End .filter-price-action -->
-                                        </form>
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="{% url 'shop:catalog' %}" role="button" aria-expanded="true" aria-controls="widget-body-4">Рейтинг</a>
-                                </h3>
-
-                                <div class="collapse show" id="widget-body-4">
-                                    <div class="widget-body">
-                                        <ul class="cat-list">
-                                            <li class="radio">
-                                                <label><input type="radio" name="ratingRadio" checked="">все</label>
-                                            </li>
-                                            <li class="radio">
-                                                <label><input type="radio" name="ratingRadio">1 звезда</label>
-                                            </li>
-                                            <li class="radio">
-                                                <label><input type="radio" name="ratingRadio">2 звезды</label>
-                                            </li>
-                                            <li class="radio">
-                                                <label><input type="radio" name="ratingRadio">3 звезды</label>
-                                            </li>
-                                            <li class="radio">
-                                                <label><input type="radio" name="ratingRadio">4 звезды</label>
-                                            </li>
+                                            <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
+                                            <li><a href="{% url 'shop:catalog' 3 %}">БАКАЛЕЯ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 4 %}">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 5 %}">НАПИТКИ</a></li>
                                         </ul>
                                     </div><!-- End .widget-body -->
                                 </div><!-- End .collapse -->
