@@ -113,7 +113,7 @@
                                             <div class="product">
                                                 <div class="product-details">
                                                     <h4 class="product-title">
-                                                        <a href="{% url 'shop:product' %}">Морковка</a>
+                                                        <a href="#">Морковка</a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
@@ -123,7 +123,7 @@
                                                 </div><!-- End .product-details -->
 
                                                 <figure class="product-image-container">
-                                                    <a href="{% url 'shop:product' %}" class="product-image">
+                                                    <a href="#" class="product-image">
                                                         <img src="{% static 'images/products/морковка.jpg' %}" alt="product">
                                                     </a>
                                                     <a href="#" class="btn-remove" title="Remove Product"><i class="icon-retweet"></i></a>
@@ -133,7 +133,7 @@
                                             <div class="product">
                                                 <div class="product-details">
                                                     <h4 class="product-title">
-                                                        <a href="{% url 'shop:product' %}">Мясо</a>
+                                                        <a href="#">Мясо</a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
@@ -143,7 +143,7 @@
                                                 </div><!-- End .product-details -->
 
                                                 <figure class="product-image-container">
-                                                    <a href="{% url 'shop:product' %}" class="product-image">
+                                                    <a href="#" class="product-image">
                                                         <img src="{% static 'images/products/мясо.jpg' %}" alt="product">
                                                     </a>
                                                     <a href="#" class="btn-remove" title="Remove Product"><i class="icon-retweet"></i></a>
@@ -183,9 +183,9 @@
                         {% endif %}
                         <div class="home-slide-content">
                             <div class="container">
-                                <a href="{% url 'shop:product' %}" class="slide-image"><img src="{% static 'images/products/' %}{{ element.image_set.first.image.name }}"></a>
+                                <a href="{% url 'shop:product' element.id %}" class="slide-image"><img src="{{ element.image_set.first.image.url }}"></a>
                                 <div class="slide-details">
-                                    <a href="{% url 'shop:product' %}" class="product-title">{{ element.name }}</a>
+                                    <a href="{% url 'shop:product' element.id %}" class="product-title">{{ element.name }}</a>
                                     <div class="product-details">
                                         <div class="sales-panel">
                                             <div class="sales-info">
@@ -214,20 +214,20 @@
                         <div class="col-6 col-md-4">
                             <div class="product-default inner-quickview inner-icon">
                                 <figure>
-                                    <a href="{% url 'shop:product' %}">
-                                        <img src="{% static 'images/products/' %}{{ element.image_set.first.image.name }}">
+                                    <a href="{% url 'shop:product' element.id %}">
+                                        <img src="{{ element.image_set.first.image.url }}">
                                     </a>
                                     <div class="btn-icon-group">
                                         <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
                                     </div>
-                                    <a href="{% url 'shop:product' %}" class="btn-quickview" title="Quick View">Подробнее</a>
+                                    <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
                                 </figure>
                                 <div class="product-details">
                                     <div class="category-list">
                                         <a href="{% url 'shop:catalog' %}" class="product-category">{{ element.category }}</a>
                                     </div>
                                     <h2 class="product-title">
-                                        <a href="{% url 'shop:product' %}">{{ element.name }}</a>
+                                        <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
                                     </h2>
                                     <div class="price-box">
                                         <span class="product-price">{{ element.price }}</span>

@@ -19,8 +19,11 @@ def blog(request):
     return render(request, 'blog.html')
 
 
-def product(request):
-    return render(request, 'product.html')
+def product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    similar_products = Product.objects.filter(category=product.category)
+    return render(request, 'product.html', {'product': product,
+                                            'similar_products': similar_products})
 
 
 def cart(request):

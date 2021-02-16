@@ -22,18 +22,11 @@
                                 <div class="col-lg-7 col-md-6 product-single-gallery">
                                     <div class="product-slider-container product-item">
                                         <div class="product-single-carousel owl-carousel owl-theme">
+                                            {% for element in product.image_set.all %}
                                             <div class="product-item">
-                                                <img class="product-single-image" src="{% static 'images/products/морковка.jpg' %}" data-zoom-image="assets/images/products/морковка.jpg"/>
+                                                <img class="product-single-image" src="{{ element.image.url }}" data-zoom-image="{{ element.image.url }}"/>
                                             </div>
-                                            <div class="product-item">
-                                                <img class="product-single-image" src="{% static 'images/products/морковка.jpg' %}" data-zoom-image="assets/images/products/морковка.jpg"/>
-                                            </div>
-                                            <div class="product-item">
-                                                <img class="product-single-image" src="{% static 'images/products/морковка.jpg' %}" data-zoom-image="assets/images/products/морковка.jpg"/>
-                                            </div>
-                                            <div class="product-item">
-                                                <img class="product-single-image" src="{% static 'images/products/морковка.jpg' %}" data-zoom-image="assets/images/products/морковка.jpg"/>
-                                            </div>
+                                            {% endfor %}
                                         </div>
                                         <!-- End .product-single-carousel -->
                                         <span class="prod-full-screen">
@@ -41,39 +34,24 @@
                                         </span>
                                     </div>
                                     <div class="prod-thumbnail row owl-dots" id='carousel-custom-dots'>
+                                        {% for element in product.image_set.all %}
                                         <div class="col-3 owl-dot">
-                                            <img src="{% static 'images/products/морковка.jpg' %}"/>
+                                            <img src="{{ element.image.url }}"/>
                                         </div>
-                                        <div class="col-3 owl-dot">
-                                            <img src="{% static 'images/products/морковка.jpg' %}"/>
-                                        </div>
-                                        <div class="col-3 owl-dot">
-                                            <img src="{% static 'images/products/морковка.jpg' %}"/>
-                                        </div>
-                                        <div class="col-3 owl-dot">
-                                            <img src="{% static 'images/products/морковка.jpg' %}"/>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div><!-- End .col-lg-7 -->
 
                                 <div class="col-md-6 col-lg-5-more">
                                     <div class="product-single-details">
-                                        <h1 class="product-title">Морковка</h1>
-
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                            </div><!-- End .product-ratings -->
-
-                                            <a href="#" class="rating-link">( 6 отзывов )</a>
-                                        </div><!-- End .product-container -->
+                                        <h1 class="product-title">{{ product.name }}</h1>
 
                                         <div class="price-box">
-                                            <span class="product-price">199 руб.</span>
+                                            <span class="product-price">{{ product.price }}</span>
                                         </div><!-- End .price-box -->
 
                                         <div class="product-desc">
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariat henderit in voluptate velit.</p>
+                                            <p>{{ product.description }}</p>
                                         </div><!-- End .product-desc -->
 
                                         <div class="product-action">
@@ -83,131 +61,6 @@
                                 </div><!-- End .col-lg-5 -->
                             </div><!-- End .row -->
                         </div><!-- End .product-single-container -->
-
-                        <div class="product-single-tabs">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="product-tab-desc" data-toggle="tab" href="{% url 'shop:index' %}" role="tab" aria-controls="product-desc-content" aria-selected="true">Описание</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="product-tab-reviews" data-toggle="tab" href="{% url 'shop:index' %}" role="tab" aria-controls="product-reviews-content" aria-selected="false">Отзывы</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="product-desc-content" role="tabpanel" aria-labelledby="product-tab-desc">
-                                    <div class="product-desc-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-                                        <ul>
-                                            <li><i class="icon-ok"></i>Any Product types that You want - Simple, Configurable</li>
-                                            <li><i class="icon-ok"></i>Downloadable/Digital Products, Virtual Products</li>
-                                            <li><i class="icon-ok"></i>Inventory Management with Backordered items</li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-                                    </div><!-- End .product-desc-content -->
-                                </div><!-- End .tab-pane -->
-        
-                                <div class="tab-pane fade" id="product-reviews-content" role="tabpanel" aria-labelledby="product-tab-reviews">
-                                    <div class="product-reviews-content">
-                                        <div class="collateral-box">
-                                            <ul>
-                                                <li>Будьте первым</li>
-                                            </ul>
-                                        </div><!-- End .collateral-box -->
-        
-                                        <div class="add-product-review">
-                                            <h3 class="text-uppercase heading-text-color font-weight-semibold">Напишите Ваш отзыв</h3>
-                                            <p>Как Вы оцениваете этот продукт? *</p>
-        
-                                            <form action="#">
-                                                <table class="ratings-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>&nbsp;</th>
-                                                            <th>1</th>
-                                                            <th>2</th>
-                                                            <th>3</th>
-                                                            <th>4</th>
-                                                            <th>5</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Качество</td>
-                                                            <td>
-                                                                <input type="radio" name="ratings[1]" id="Quality_1" value="1" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="ratings[1]" id="Quality_2" value="2" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="ratings[1]" id="Quality_3" value="3" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="ratings[1]" id="Quality_4" value="4" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="ratings[1]" id="Quality_5" value="5" class="radio">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Объем</td>
-                                                            <td>
-                                                                <input type="radio" name="value[1]" id="Value_1" value="1" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="value[1]" id="Value_2" value="2" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="value[1]" id="Value_3" value="3" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="value[1]" id="Value_4" value="4" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="value[1]" id="Value_5" value="5" class="radio">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Цена</td>
-                                                            <td>
-                                                                <input type="radio" name="price[1]" id="Price_1" value="1" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="price[1]" id="Price_2" value="2" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="price[1]" id="Price_3" value="3" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="price[1]" id="Price_4" value="4" class="radio">
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="price[1]" id="Price_5" value="5" class="radio">
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-        
-                                                <div class="form-group">
-                                                    <label>Nickname <span class="required">*</span></label>
-                                                    <input type="text" class="form-control form-control-sm" required>
-                                                </div><!-- End .form-group -->
-                                                <div class="form-group">
-                                                    <label>Summary of Your Review <span class="required">*</span></label>
-                                                    <input type="text" class="form-control form-control-sm" required>
-                                                </div><!-- End .form-group -->
-                                                <div class="form-group mb-2">
-                                                    <label>Review <span class="required">*</span></label>
-                                                    <textarea cols="5" rows="6" class="form-control form-control-sm"></textarea>
-                                                </div><!-- End .form-group -->
-        
-                                                <input type="submit" class="btn btn-primary" value="Submit Review">
-                                            </form>
-                                        </div><!-- End .add-product-review -->
-                                    </div><!-- End .product-reviews-content -->
-                                </div><!-- End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .product-single-tabs -->
                     </div><!-- End .col-lg-9 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
@@ -218,19 +71,17 @@
                         <h2 class="section-title">ПОХОЖИЕ ТОВАРЫ</h2>
 
                         <div class="row row-sm product-ajax-grid">
+                            {% for element in similar_products %}
                             <div class="col-6 col-md-4">
                                 <div class="product-default inner-quickview inner-icon">
                                     <figure>
                                         <a href="{% url 'shop:index' %}">
-                                            <img src="{% static 'images/products/морковка.jpg' %}">
+                                            <img src="{{ element.image_set.first.image.url }}">
                                         </a>
-                                        <div class="label-group">
-                                            <span class="product-label label-cut">скидка 27%</span>
-                                        </div>
                                         <div class="btn-icon-group">
                                             <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
                                         </div>
-                                        <a href="{% url 'shop:index' %}" class="btn-quickview" title="Quick View">Подробнее</a>
+                                        <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
                                     </figure>
                                     <div class="product-details">
                                         <div class="category-wrap">
@@ -240,95 +91,15 @@
                                             <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
                                         </div>
                                         <h2 class="product-title">
-                                            <a href="{% url 'shop:index' %}">Морковка</a>
+                                            <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
                                         </h2>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div><!-- End .product-ratings -->
-                                        </div><!-- End .product-container -->
                                         <div class="price-box">
-                                            <span class="old-price">59.00</span>
-                                            <span class="product-price">49.00</span>
+                                            <span class="product-price">{{ element.price }}</span>
                                         </div><!-- End .price-box -->
                                     </div><!-- End .product-details -->
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure>
-                                        <a href="{% url 'shop:index' %}">
-                                            <img src="{% static 'images/products/морковка.jpg' %}">
-                                        </a>
-                                        <div class="label-group">
-                                            <span class="product-label label-cut">скидка 27%</span>
-                                        </div>
-                                        <div class="btn-icon-group">
-                                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
-                                        </div>
-                                        <a href="{% url 'shop:index' %}" class="btn-quickview" title="Quick View">Подробнее</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="{% url 'shop:catalog' %}" class="product-category">Каталог</a>
-                                            </div>
-                                            <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                        </div>
-                                        <h2 class="product-title">
-                                            <a href="{% url 'shop:index' %}">Морковка</a>
-                                        </h2>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div><!-- End .product-ratings -->
-                                        </div><!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="old-price">59.00</span>
-                                            <span class="product-price">49.00</span>
-                                        </div><!-- End .price-box -->
-                                    </div><!-- End .product-details -->
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure>
-                                        <a href="{% url 'shop:index' %}">
-                                            <img src="{% static 'images/products/морковка.jpg' %}">
-                                        </a>
-                                        <div class="label-group">
-                                            <span class="product-label label-cut">скидка 27%</span>
-                                        </div>
-                                        <div class="btn-icon-group">
-                                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
-                                        </div>
-                                        <a href="{% url 'shop:index' %}" class="btn-quickview" title="Quick View">Подробнее</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="{% url 'shop:catalog' %}" class="product-category">Каталог</a>
-                                            </div>
-                                            <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                                        </div>
-                                        <h2 class="product-title">
-                                            <a href="{% url 'shop:index' %}">Морковка</a>
-                                        </h2>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span><!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div><!-- End .product-ratings -->
-                                        </div><!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="old-price">59.00</span>
-                                            <span class="product-price">49.00</span>
-                                        </div><!-- End .price-box -->
-                                    </div><!-- End .product-details -->
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                         
                         <button class="btn-view-more">ЕЩЁ</button>
