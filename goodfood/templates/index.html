@@ -80,11 +80,15 @@
                                     <li>
                                         <a href="{% url 'shop:blog' %}">БЛОГ</a>
                                     </li>
-
+                                    {% if user.is_authenticated %}
                                     <li class="sf-with-ul">
-                                        <a href="{% url 'shop:login' %}">АВТОРИЗАЦИЯ</a>
+                                        <a href="{% url 'shop:logout' %}">ВЫЙТИ</a>
                                     </li>
-                                    
+                                    {% else %}
+                                    <li class="sf-with-ul">
+                                        <a href="{% url 'shop:login' %}">ВОЙТИ</a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </nav>
                         </div>

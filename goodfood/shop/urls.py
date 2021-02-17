@@ -10,5 +10,7 @@ urlpatterns = [
     path('product/<int:product_id>/', views.product, name='product'),
     path('cart', views.cart, name='cart'),
     path('dashboard', views.dashboard, name='dashboard'),
-    path('login', views.login, name='login'),
+    path('registration', views.RegisterFormView.as_view(), name='registration'),
+    path('login', views.LoginFormView.as_view(), name='login'),
+    path('logout', views.LogoutView.as_view(), name='logout'),
     ]

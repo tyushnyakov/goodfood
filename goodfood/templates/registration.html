@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% load static %}
 
-{% block title %}Goodfood - Логин{% endblock title %}
+{% block title %}Goodfood - Регистрация{% endblock title %}
 
 {% block content %}
         <main class="main">
@@ -9,17 +9,18 @@
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Логин</li>
+                        <li class="breadcrumb-item active" aria-current="page">Регистрация</li>
                     </ol>
                 </div><!-- End .container -->
             </nav>
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+
+                    <div class="col-md-8">
                         <div class="heading">
-                            <h2 class="title">Вход</h2>
-                            <p>Если у Вас есть учетная запись, войдите.</p>
+                            <h2 class="title">Создать учетную запись</h2>
+                            <p></p>
                         </div><!-- End .heading -->
 
                         <form action="" method="post">
@@ -27,16 +28,9 @@
                             {{ form.as_p }}
 
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-primary">Войти</button>
-                                <a href="#" class="forget-pass"> Забыли пароль?</a>
+                                <button type="submit" class="btn btn-primary">Создать учетную запись</button>
                             </div><!-- End .form-footer -->
                         </form>
-                    </div><!-- End .col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="heading">
-                            <h2 class="title">Регистрация</h2>
-                            <p>Если у Вас нет учетной записи, <a href="{% url 'shop:registration' %}">зарегистрируйтесь</a></p>
-                        </div><!-- End .heading -->
                     </div><!-- End .col-md-6 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
