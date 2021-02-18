@@ -199,7 +199,7 @@
                                                 <span class="product-price">{{ element.price }}</span>
                                             </div>
                                         </div>
-                                        <button class="btn">КУПИТЬ</button>
+                                        <a href="{% url 'shop:cart' element.id %}"><button class="btn">КУПИТЬ</button></a>
                                     </div>
                                 </div>
                             </div>

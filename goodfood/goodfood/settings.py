@@ -67,6 +67,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'custom_tags': 'shop.templatetags.custom_tags'
+            }
         },
     },
 ]
@@ -130,3 +133,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ktyushnyakov@gmail.com'
+EMAIL_HOST_PASSWORD = 'k1976210528'
+DEFAULT_FROM_EMAIL = 'ktyushnyakov'
+DEFAULT_TO_EMAIL = 'ktyushnyakov@gmail.com'

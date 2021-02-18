@@ -8,6 +8,7 @@ from django.views.generic.base import View
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
+from django.core.mail import send_mail
 
 
 def index(request):
@@ -38,9 +39,40 @@ def product(request, product_id):
                                             'similar_products': similar_products})
 
 
-@login_required
-def cart(request):
-    return render(request, 'cart.html')
+def cart(request, product_id=None):
+    if product_id:
+        if not 'cart' in request.session:
+            request.session['cart'] = {}
+        request.session['cart'][str(product_id)] = 1
+        request.session.modified = True
+        cart_products = Product.objects.filter(pk__in=request.session['cart'])
+        cart = request.session['cart']
+    else:
+        if not 'cart' in request.session:
+            cart_products = []
+            cart = {}
+        else:
+            cart_products = Product.objects.filter(pk__in=request.session['cart'])
+            cart = request.session['cart']
+    return render(request, 'cart.html', {'cart_products': cart_products, 'cart': cart})
+
+
+def cart_clear(request):
+    del request.session['cart']
+    request.session.modified = True
+    return HttpResponseRedirect("/cart")
+
+
+def cart_add(request, product_id):
+    request.session['cart'][str(product_id)] += 1
+    request.session.modified = True
+    return HttpResponseRedirect("/cart")
+
+
+def cart_remove(request, product_id):
+    del request.session['cart'][str(product_id)]
+    request.session.modified = True
+    return HttpResponseRedirect("/cart")
 
 
 def dashboard(request):
@@ -53,7 +85,14 @@ class RegisterFormView(FormView):
     template_name = "registration.html"
 
     def form_valid(self, form):
-        form.save()
+        user = form.save()
+        send_mail(
+            'Подтверждение регистрации',
+            'Вы зарегестрированы',
+            'ktyushnyakov@gmail.com',
+            [user.email],
+            fail_silently=False,
+        )
         return super(RegisterFormView, self).form_valid(form)
 
 

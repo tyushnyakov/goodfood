@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}Goodfood - Корзина{% endblock title %}
 
@@ -8,7 +9,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Корзина</li>
                     </ol>
                 </div><!-- End .container -->
@@ -28,33 +29,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for element in cart_products %}
                                     <tr class="product-row">
                                         <td class="product-col">
                                             <figure class="product-image-container">
-                                                <a href="{% url 'shop:product' %}" class="product-image">
-                                                    <img src="{% static 'images/products/морковка.jpg' %}" alt="product">
+                                                <a href="{% url 'shop:product' element.id %}" class="product-image">
+                                                    <img src="{{ element.image_set.first.image.url }}" alt="product">
                                                 </a>
                                             </figure>
                                             <h2 class="product-title">
-                                                <a href="{% url 'shop:product' %}">Морковка</a>
+                                                <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
                                             </h2>
                                         </td>
-                                        <td>17.90</td>
+                                        <td>{{ element.price }}</td>
+                                        <td>{{ cart|get_item:element.id }}</td>
                                         <td>
-                                            <input class="vertical-quantity form-control" type="text">
+                                            <div>
+                                                <a href="{% url 'shop:cart_add' element.id %}" title="Edit product" class="btn-edit"><span class="sr-only">Add</span><i class="icon-plus"></i></a>
+                                                <a href="{% url 'shop:cart_remove' element.id %}" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
+                                            </div><!-- End .float-right -->
                                         </td>
-                                        <td>17.90</td>
                                     </tr>
+                                    {% endfor %}
                                     <tr class="product-action-row">
                                         <td colspan="4" class="clearfix">
-                                            <div class="float-left">
-                                                <a href="#" class="btn-move">Добавить в избраное</a>
-                                            </div><!-- End .float-left -->
                                             
-                                            <div class="float-right">
-                                                <a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-                                                <a href="#" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
-                                            </div><!-- End .float-right -->
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -67,8 +67,8 @@
                                             </div><!-- End .float-left -->
 
                                             <div class="float-right">
-                                                <a href="#" class="btn btn-outline-secondary btn-clear-cart">Очистить корзину</a>
-                                                <a href="#" class="btn btn-outline-secondary btn-update-cart">Обновить корзину</a>
+                                                <a href="{% url 'shop:cart_clear' %}" class="btn btn-outline-secondary btn-clear-cart">Очистить корзину</a>
+                                                <a href="#" class="btn btn-outline-secondary btn-update-cart">Оформить заказ</a>
                                             </div><!-- End .float-right -->
                                         </td>
                                     </tr>
