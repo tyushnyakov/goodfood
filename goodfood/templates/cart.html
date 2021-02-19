@@ -25,7 +25,7 @@
                                         <th class="product-col">Товар</th>
                                         <th class="price-col">Цена</th>
                                         <th class="qty-col">Количество</th>
-                                        <th>Сумма</th>
+                                        <th>Добавить/Удалить</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +68,6 @@
 
                                             <div class="float-right">
                                                 <a href="{% url 'shop:cart_clear' %}" class="btn btn-outline-secondary btn-clear-cart">Очистить корзину</a>
-                                                <a href="#" class="btn btn-outline-secondary btn-update-cart">Оформить заказ</a>
                                             </div><!-- End .float-right -->
                                         </td>
                                     </tr>
@@ -79,51 +78,14 @@
 
                     <div class="col-lg-4">
                         <div class="cart-summary">
-                            <h3>Итого</h3>
+                            <h3>Заказ</h3>
 
-                            <h4>
-                                <a data-toggle="collapse" href="#" class="collapsed" role="button" aria-expanded="false" aria-controls="total-estimate-section">Доставка</a>
-                            </h4>
+                            <form action="{% url 'shop:order' %}" method="post" class="order-form">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <p><input class="btn btn-block btn-sm btn-primary" type="submit" value="Оформить заказ"></p>
+                            </form>
 
-                            <div class="collapse" id="total-estimate-section">
-                                <form action="#">
-                                    
-                                    <div class="form-group form-group-sm">
-                                        <label>Адрес</label>
-                                        <input type="text" class="form-control form-control-sm">
-                                    </div><!-- End .form-group -->
-
-                                    <div class="form-group form-group-sm">
-                                        <label>Телефон</label>
-                                        <input type="text" class="form-control form-control-sm">
-                                    </div><!-- End .form-group -->
-
-                                </form>
-                            </div><!-- End #total-estimate-section -->
-
-                            <table class="table table-totals">
-                                <tbody>
-                                    <tr>
-                                        <td>Сумма</td>
-                                        <td>17.90</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Доставка</td>
-                                        <td>0.00</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td>Итого</td>
-                                        <td>17.90</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
-                            <div class="checkout-methods">
-                                <a href="#" class="btn btn-block btn-sm btn-primary">Оплатить</a>
-                            </div><!-- End .checkout-methods -->
                         </div><!-- End .cart-summary -->
                     </div><!-- End .col-lg-4 -->
                 </div><!-- End .row -->

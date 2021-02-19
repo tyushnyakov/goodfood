@@ -60,7 +60,7 @@
                                         </a>
 
                                         <div class="btn-icon-group">
-                                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
+                                            <a href="{% url 'shop:cart' element.id %}"><button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button></a>
                                         </div>
                                         <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
                                     </figure>

@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Goodfood - Заказ{% endblock title %}
+
+{% block content %}
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Заказ</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav>
+
+            <div class="container">
+                <h1>Thank you</h1>
+                <p>Your order has been successfully completed. Your order number is
+                <strong>{{ order.id }}</strong>.</p>
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="cart-summary">
+                            <h3>Итого</h3>
+
+                            <h4>
+                                <a data-toggle="collapse" href="#" class="collapsed" role="button" aria-expanded="false" aria-controls="total-estimate-section">Доставка</a>
+                            </h4>
+
+                            <div class="collapse" id="total-estimate-section">
+                                <form action="#">
+
+                                    <div class="form-group form-group-sm">
+                                        <label>Адрес</label>
+                                        <input type="text" class="form-control form-control-sm">
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group form-group-sm">
+                                        <label>Телефон</label>
+                                        <input type="text" class="form-control form-control-sm">
+                                    </div><!-- End .form-group -->
+
+                                </form>
+                            </div><!-- End #total-estimate-section -->
+
+                            <table class="table table-totals">
+                                <tbody>
+                                    <tr>
+                                        <td>Сумма</td>
+                                        <td>17.90</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Доставка</td>
+                                        <td>0.00</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Итого</td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div><!-- End .cart-summary -->
+                    </div><!-- End .col-lg-4 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </main><!-- End .main -->
+{% endblock content %}

@@ -55,7 +55,7 @@
                                         </div><!-- End .product-desc -->
 
                                         <div class="product-action">
-                                            <a class="btn btn-dark" href="{% url 'shop:index' %}">в корзину</a>
+                                            <a class="btn btn-dark" href="{% url 'shop:cart' product.id %}">в корзину</a>
                                         </div><!-- End .product-action -->
                                     </div><!-- End .product-single-details -->
                                 </div><!-- End .col-lg-5 -->
@@ -79,7 +79,7 @@
                                             <img src="{{ element.image_set.first.image.url }}">
                                         </a>
                                         <div class="btn-icon-group">
-                                            <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button>
+                                            <a href="{% url 'shop:cart' element.id %}"><button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button></a>
                                         </div>
                                         <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
                                     </figure>

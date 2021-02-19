@@ -9,6 +9,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
 from django.core.mail import send_mail
+from .models import OrderItem, Order
+from .forms import OrderCreateForm
 
 
 def index(request):
@@ -40,6 +42,7 @@ def product(request, product_id):
 
 
 def cart(request, product_id=None):
+    form = OrderCreateForm
     if product_id:
         if not 'cart' in request.session:
             request.session['cart'] = {}
@@ -54,7 +57,8 @@ def cart(request, product_id=None):
         else:
             cart_products = Product.objects.filter(pk__in=request.session['cart'])
             cart = request.session['cart']
-    return render(request, 'cart.html', {'cart_products': cart_products, 'cart': cart})
+    return render(request, 'cart.html',
+                  {'cart_products': cart_products, 'cart': cart, 'form': form})
 
 
 def cart_clear(request):
@@ -111,3 +115,25 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect("/")
+
+
+def order(request):
+    if request.method == 'POST':
+        cart = request.session['cart']
+        user = request.user
+        form = OrderCreateForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            order.user = user
+            order.save()
+            for key, value in cart.items():
+                product = Product.objects.get(pk=int(key))
+                OrderItem.objects.create(order=order,
+                                         product=product,
+                                         price=product.price,
+                                         quantity=value)
+            del request.session['cart']
+            request.session.modified = True
+            return render(request, 'order.html', {'order': order})
+    else:
+        return HttpResponseRedirect("/cart")
