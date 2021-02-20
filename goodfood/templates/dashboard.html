@@ -19,7 +19,7 @@
                         <h2>Мой кабинет</h2>
 
                         <div class="alert alert-success" role="alert">
-                            Привет, <strong>Покупатель!</strong> В своём личном кабинете Вы можете просматривать и редактировать личную информацию.
+                            Привет, <strong>{{ user.username }}</strong> В своём личном кабинете Вы можете просматривать и редактировать личную информацию.
                         </div><!-- End .alert -->
 
                         <div class="mb-4"></div><!-- margin -->
@@ -36,8 +36,8 @@
 
                                     <div class="card-body">
                                         <p>
-                                            Иван Иванов<br>
-                                            ivanov@gmail.com<br>
+                                            {{ user.username }}<br>
+                                            {{ user.email }}<br>
                                             <a href="#">Изменить пароль</a>
                                         </p>
                                     </div><!-- End .card-body -->
@@ -62,26 +62,40 @@
 
                         <div class="card">
                             <div class="card-header">
-                                Адреса
-                                <a href="#" class="card-edit">Редактировать</a>
+                                Заказы
                             </div><!-- End .card-header -->
 
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <h4 class="">Для счетов</h4>
-                                        <address>
-                                            У Вас нет адресов.<br>
-                                            <a href="#">Редактировать</a>
-                                        </address>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4 class="">Для доставки</h4>
-                                        <address>
-                                            У Вас нет адресов.<br>
-                                            <a href="#">Редактировать</a>
-                                        </address>
-                                    </div>
+                                    {% for order in order_list %}
+                                    <div class="col-lg-4">
+                                        <div class="cart-summary">
+                                            <h3>Номер Вашего заказа <strong>{{ order.id }}</strong></h3>
+                                            {% if order.shipped %}
+                                            <h4>Статус: <strong>отправлен</strong></h4>
+                                            {% else %}
+                                            <h4>Статус: <strong>в обработке</strong></h4>
+                                            {% endif %}
+                                            <table class="table table-totals">
+                                                <tbody>
+                                                    {% for item in order.items.all %}
+                                                    <tr>
+                                                        <td>{{ item.product.name }}</td>
+                                                        <td>{{ item.quantity }}</td>
+                                                        <td>{{ item.price }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td>Итого</td>
+                                                        <td>{{ order.get_total_cost }}</td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div><!-- End .cart-summary -->
+                                    </div><!-- End .col-lg-4 -->
+                                    {% endfor %}
                                 </div>
                             </div><!-- End .card-body -->
                         </div><!-- End .card -->
@@ -93,8 +107,6 @@
 
                             <ul class="list">
                                 <li class="active"><a href="#">Учетная запись</a></li>
-                                <li><a href="#">Личная информация</a></li>
-                                <li><a href="#">Адреса</a></li>
                                 <li><a href="#">Заказы</a></li>
                             </ul>
                         </div><!-- End .widget -->

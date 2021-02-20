@@ -94,7 +94,11 @@
                         </div>
 
                         <div class="col-lg-2 header-right">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'shop:dashboard' user.id %}">
+                            {% else %}
                             <a href="{% url 'shop:dashboard' %}">
+                            {% endif %}
                                 <div class="header-user">
                                     <i class="icon-user-2"></i>
                                 </div>

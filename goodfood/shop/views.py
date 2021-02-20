@@ -11,6 +11,7 @@ from .forms import RegisterForm
 from django.core.mail import send_mail
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -79,8 +80,12 @@ def cart_remove(request, product_id):
     return HttpResponseRedirect("/cart")
 
 
-def dashboard(request):
-    return render(request, 'dashboard.html')
+@login_required
+def dashboard(request, user_id=None):
+    user = User.objects.get(pk=user_id)
+    order_list = Order.objects.filter(user=user)
+    return render(request, 'dashboard.html', {'user': user,
+                                              'order_list': order_list})
 
 
 class RegisterFormView(FormView):
@@ -117,6 +122,7 @@ class LogoutView(View):
         return HttpResponseRedirect("/")
 
 
+@login_required
 def order(request):
     if request.method == 'POST':
         cart = request.session['cart']
