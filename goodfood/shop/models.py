@@ -61,3 +61,14 @@ class OrderItem(models.Model):
         return self.price * self.quantity
 
 
+class Blog(models.Model):
+    header = models.CharField(max_length=250)
+    author = models.CharField(max_length=50)
+    category = models.CharField(max_length=50)
+    text = models.TextField()
+    published = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.header
+

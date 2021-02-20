@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product, OrderItem, Order, Blog
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
@@ -9,7 +9,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
 from django.core.mail import send_mail
-from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from django.contrib.auth.models import User
 
@@ -31,7 +30,8 @@ def catalog(request, category_id=None):
 
 
 def blog(request):
-    return render(request, 'blog.html')
+    blogs = Blog.objects.all()
+    return render(request, 'blog.html', {'blogs': blogs})
 
 
 def product(request, product_id):
