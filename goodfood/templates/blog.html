@@ -34,15 +34,15 @@
                                 </h2>
 
                                 <div class="entry-meta">
-                                    <span><i class="icon-calendar"></i>{{ blog.published }}</span>
-                                    <span><i class="icon-user"></i>By <a href="#">{{ blog.author }}</a></span>
+                                    <span><i class="icon-calendar"></i>{{ blog.published|date:"d.m.Y" }}</span>
+                                    <span><i class="icon-user"></i> <a href="#">{{ blog.author }}</a></span>
                                     <span><i class="icon-folder-open"></i>
                                         {{ blog.category }}
                                     </span>
                                 </div><!-- End .entry-meta -->
 
                                 <div class="entry-content">
-                                     {{ blog.text }}
+                                     {{ blog.text|safe }}
                                 </div><!-- End .entry-content -->
 
                                 <div class="entry-share">
@@ -75,86 +75,7 @@
 
                     </div><!-- End .col-lg-9 -->
                     {% endfor %}
-                    <aside class="sidebar col-lg-3">
-                        <div class="sidebar-wrapper">
-                            <div class="widget widget-search">
-                                <form role="search" method="get" class="search-form" action="#">
-                                    <input type="search" class="form-control" placeholder="Search posts here..." name="s" required>
-                                    <button type="submit" class="search-submit" title="Search">
-                                        <i class="icon-search"></i>
-                                        <span class="sr-only">Поиск</span>
-                                    </button>
-                                </form>
-                            </div><!-- End .widget -->
 
-                            <div class="widget widget-categories">
-                                <h4 class="widget-title">Категории пкбликаций</h4>
-
-                                <ul class="list">
-                                    <li><a href="#">Еда</a></li>
-                                    <li><a href="#">Напитки</a></li>
-                                    <li><a href="#">Сладкое</a></li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Недавние публикации</h4>
-
-                                <ul class="simple-entry-list">
-                                    <li>
-                                        <div class="entry-media">
-                                            <a href="{% url 'shop:blog' %}">
-                                                <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
-                                            </a>
-                                        </div><!-- End .entry-media -->
-                                        <div class="entry-info">
-                                            <a href="{% url 'shop:blog' %}">Сосискм</a>
-                                            <div class="entry-meta">
-                                                08 апреля 2018 г.
-                                            </div><!-- End .entry-meta -->
-                                        </div><!-- End .entry-info -->
-                                    </li>
-
-                                    <li>
-                                        <div class="entry-media">
-                                            <a href="{% url 'shop:blog' %}">
-                                                <img src="{% static 'images/products/морковка.jpg' %}" alt="Post">
-                                            </a>
-                                        </div><!-- End .entry-media -->
-                                        <div class="entry-info">
-                                            <a href="{% url 'shop:blog' %}">Сардельки</a>
-                                            <div class="entry-meta">
-                                                23 марта 2016 г.
-                                            </div><!-- End .entry-meta -->
-                                        </div><!-- End .entry-info -->
-                                    </li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Облако тэгов</h4>
-
-                                <div class="tagcloud">
-                                    <a href="#">еда</a>
-                                    <a href="#">водка</a>
-                                    <a href="#">колбаса</a>
-                                    <a href="#">майонез</a>
-                                    <a href="#">горчица</a>
-                                </div><!-- End .tagcloud -->
-                            </div><!-- End .widget -->
-
-                            <div class="widget">
-                                <h4 class="widget-title">Архив</h4>
-
-                                <ul class="list">
-                                    <li><a href="#">Апрель 2018</a></li>
-                                    <li><a href="#">Март 2018</a></li>
-                                    <li><a href="#">Февраль 2018</a></li>
-                                </ul>
-                            </div><!-- End .widget -->
-
-                        </div><!-- End .sidebar-wrapper -->
-                    </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
 

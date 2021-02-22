@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,66 +106,43 @@
                             <div class="dropdown cart-dropdown">
                                 <a href="{% url 'shop:cart' %}" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                     <i class="minicart-icon"></i>
-                                    <span class="cart-count">2</span>
+                                    {% if cart %}
+                                    <span class="cart-count">{{ cart|length }}</span>
+                                    {% endif %}
                                 </a>
 
                                 <div class="dropdown-menu" >
                                     <div class="dropdownmenu-wrapper">
                                         <div class="dropdown-cart-header">
-                                            <span>2 товара</span>
+                                            <span>{{ cart|length }} товаров</span>
 
                                             <a href="{% url 'shop:cart' %}">Корзина</a>
                                         </div><!-- End .dropdown-cart-header -->
                                         <div class="dropdown-cart-products">
+                                            {% for element in cart_products %}
                                             <div class="product">
                                                 <div class="product-details">
                                                     <h4 class="product-title">
-                                                        <a href="#">Морковка</a>
+                                                        <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x 99.00
+                                                        <span class="cart-product-qty">{{ cart|get_item:element.id }}</span>
+                                                        x {{ element.price }}
                                                     </span>
                                                 </div><!-- End .product-details -->
 
                                                 <figure class="product-image-container">
-                                                    <a href="#" class="product-image">
-                                                        <img src="{% static 'images/products/морковка.jpg' %}" alt="product">
+                                                    <a href="{% url 'shop:product' element.id %}" class="product-image">
+                                                        <img src="{{ element.image_set.first.image.url }}" alt="product">
                                                     </a>
-                                                    <a href="#" class="btn-remove" title="Remove Product"><i class="icon-retweet"></i></a>
                                                 </figure>
                                             </div><!-- End .product -->
-
-                                            <div class="product">
-                                                <div class="product-details">
-                                                    <h4 class="product-title">
-                                                        <a href="#">Мясо</a>
-                                                    </h4>
-
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x 35.00
-                                                    </span>
-                                                </div><!-- End .product-details -->
-
-                                                <figure class="product-image-container">
-                                                    <a href="#" class="product-image">
-                                                        <img src="{% static 'images/products/мясо.jpg' %}" alt="product">
-                                                    </a>
-                                                    <a href="#" class="btn-remove" title="Remove Product"><i class="icon-retweet"></i></a>
-                                                </figure>
-                                            </div><!-- End .product -->
+                                            {% endfor %}
                                         </div><!-- End .cart-product -->
 
-                                        <div class="dropdown-cart-total">
-                                            <span>Итого</span>
-
-                                            <span class="cart-total-price">134.00</span>
-                                        </div><!-- End .dropdown-cart-total -->
-
                                         <div class="dropdown-cart-action">
-                                            <a href="{% url 'shop:index' %}" class="btn btn-block">Оформить</a>
+                                            <a href="{% url 'shop:cart' %}" class="btn btn-block">Оформить</a>
                                         </div><!-- End .dropdown-cart-total -->
                                     </div><!-- End .dropdownmenu-wrapper -->
                                 </div><!-- End .dropdown-menu -->
@@ -226,7 +204,7 @@
                                     <div class="btn-icon-group">
                                         <a href="{% url 'shop:cart' element.id %}"><button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button></a>
                                     </div>
-                                    <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
+
                                 </figure>
                                 <div class="product-details">
                                     <div class="category-list">

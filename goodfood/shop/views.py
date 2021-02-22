@@ -14,32 +14,39 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    data = {
-        'slider_list': Product.objects.filter(slider=True),
-        'chosen_list': Product.objects.filter(chosen=True),
-    }
+    data = get_cart(request)
+    data['slider_list'] = Product.objects.filter(slider=True)
+    data['chosen_list'] = Product.objects.filter(chosen=True)
+
     return render(request, 'index.html', context=data)
 
 
 def catalog(request, category_id=None):
+    data = get_cart(request)
     if category_id:
         products = Product.objects.filter(category_id=category_id)
     else:
         products = Product.objects.all()
-    return render(request, 'catalog.html', {"products": products})
+    data['products'] = products
+
+    return render(request, 'catalog.html', context=data)
 
 
 def blog(request):
-    blogs = Blog.objects.all()
-    return render(request, 'blog.html', {'blogs': blogs})
+    data = get_cart(request)
+    data['blogs'] = Blog.objects.all()
+
+    return render(request, 'blog.html', context=data)
 
 
 def product(request, product_id):
+    data = get_cart(request)
     product = Product.objects.get(id=product_id)
-    similar_products = Product.objects.filter(category=product.category)\
+    data['product'] = product
+    data['similar_products'] = Product.objects.filter(category=product.category)\
         .exclude(id=product_id).order_by('chosen')
-    return render(request, 'product.html', {'product': product,
-                                            'similar_products': similar_products})
+
+    return render(request, 'product.html', context=data)
 
 
 def cart(request, product_id=None):
@@ -82,16 +89,24 @@ def cart_remove(request, product_id):
 
 @login_required
 def dashboard(request, user_id=None):
+    data = get_cart(request)
     user = User.objects.get(pk=user_id)
-    order_list = Order.objects.filter(user=user)
-    return render(request, 'dashboard.html', {'user': user,
-                                              'order_list': order_list})
+    data['user'] = user
+    data['order_list'] = Order.objects.filter(user=user)
+    return render(request, 'dashboard.html', context=data)
 
 
 class RegisterFormView(FormView):
     form_class = RegisterForm
     success_url = "/login"
     template_name = "registration.html"
+
+    def get(self, request):
+        context = self.get_context_data()
+        data = get_cart(request)
+        context['cart'] = data['cart']
+        context['cart_products'] = data['cart_products']
+        return render(self.request, self.template_name, context)
 
     def form_valid(self, form):
         user = form.save()
@@ -109,6 +124,13 @@ class LoginFormView(FormView):
     form_class = AuthenticationForm
     template_name = "login.html"
     success_url = "/"
+
+    def get(self, request):
+        context = self.get_context_data()
+        data = get_cart(request)
+        context['cart'] = data['cart']
+        context['cart_products'] = data['cart_products']
+        return render(self.request, self.template_name, context)
 
     def form_valid(self, form):
         self.user = form.get_user()
@@ -143,3 +165,13 @@ def order(request):
             return render(request, 'order.html', {'order': order})
     else:
         return HttpResponseRedirect("/cart")
+
+
+def get_cart(request):
+    if not 'cart' in request.session:
+        cart_products = []
+        cart = {}
+    else:
+        cart_products = Product.objects.filter(pk__in=request.session['cart'])
+        cart = request.session['cart']
+    return {'cart': cart, 'cart_products': cart_products}

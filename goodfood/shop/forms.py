@@ -23,3 +23,4 @@ class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['address', 'phone']
+        labels = {'address': 'Адрес', 'phone': 'Телефон'}
