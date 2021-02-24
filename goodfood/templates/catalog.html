@@ -36,22 +36,10 @@
                                 </div><!-- End .toolbox-item -->
                             </div><!-- End .toolbox-left -->
 
-                            <div class="toolbox-item toolbox-show">
-                                <label>Показывать 1–9 из 60</label>
-                            </div><!-- End .toolbox-item -->
-
-                            <div class="layout-modes">
-                                <a href="{% url 'shop:catalog' %}" class="layout-btn btn-grid active" title="Grid">
-                                    <i class="icon-mode-grid"></i>
-                                </a>
-                                <a href="{% url 'shop:catalog' %}" class="layout-btn btn-list" title="List">
-                                    <i class="icon-mode-list"></i>
-                                </a>
-                            </div><!-- End .layout-modes -->
                         </nav>
 
                         <div class="row row-sm">
-                            {% for element in products %}
+                            {% for element in page_obj %}
                             <div class="col-6 col-md-4 col-lg-3">
                                 <div class="product-default inner-quickview inner-icon">
                                     <figure>
@@ -84,26 +72,23 @@
                         </div>
 
                         <nav class="toolbox toolbox-pagination">
-                            <div class="toolbox-item toolbox-show">
-                                <label>Показывать 1–9 из 60 </label>
-                            </div><!-- End .toolbox-item -->
+                            <div class="pagination">
+                               <span class="step-links">
+                                   {% if page_obj.has_previous %}
+                                       <a href="?page=1">&laquo; Начало</a>
+                                       <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+                                   {% endif %}
 
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><span>...</span></li>
-                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
-                                </li>
-                            </ul>
+                                   <span class="current">
+                                       Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                                   </span>
+
+                                   {% if page_obj.has_next %}
+                                       <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                                       <a href="?page={{ page_obj.paginator.num_pages }}">Конец &raquo;</a>
+                                   {% endif %}
+                               </span>
+                            </div>
                         </nav>
                     </div><!-- End .col-lg-9 -->
 

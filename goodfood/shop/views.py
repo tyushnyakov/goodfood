@@ -11,6 +11,7 @@ from .forms import RegisterForm
 from django.core.mail import send_mail, mail_admins
 from .forms import OrderCreateForm
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -27,7 +28,10 @@ def catalog(request, category_id=None):
         products = Product.objects.filter(category_id=category_id)
     else:
         products = Product.objects.all()
-    data['products'] = products
+    paginator = Paginator(products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    data['page_obj'] = page_obj
 
     return render(request, 'catalog.html', context=data)
 
