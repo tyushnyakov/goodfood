@@ -59,21 +59,13 @@
                                         <a href="{% url 'shop:index' %}">ГЛАВНАЯ</a>
                                     </li>
                                    
-                                    <li class="">
+                                    <li class="sf-with-ul">
                                         <a href="{% url 'shop:catalog' %}">КАТАЛОГ</a>
-                                        <div class="megamenu">
-                                            <div class="row row-sm">
-                                                <div class="col-lg-2">
-                                                    
-                                                    <ul class="submenu">
-                                                        <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
-                                                        <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
-                                                        <li><a href="{% url 'shop:catalog' 3 %}">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
-                                                    </ul>
-                                                </div><!-- End .col-lg-4 -->
-
-                                            </div><!-- End .row -->
-                                        </div><!-- End .megamenu -->
+                                        <ul>
+                                            <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
+                                            <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
+                                            <li><a href="{% url 'shop:catalog' 3 %}">КОНДИТЕРСКИЕ ТОВАРЫ</a></li>
+                                        </ul>
                                     </li>
 
                                     <li>

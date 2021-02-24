@@ -8,7 +8,7 @@ from django.views.generic.base import View
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, mail_admins
 from .forms import OrderCreateForm
 from django.contrib.auth.models import User
 
@@ -113,7 +113,7 @@ class RegisterFormView(FormView):
         send_mail(
             'Подтверждение регистрации',
             'Вы зарегестрированы',
-            'ktyushnyakov@gmail.com',
+            'admin@localhost',
             [user.email],
             fail_silently=False,
         )
@@ -160,6 +160,7 @@ def order(request):
                                          product=product,
                                          price=product.price,
                                          quantity=value)
+            mail_admins('Новый заказ', 'Оформлен новый заказ № {}'.format(order.id))
             del request.session['cart']
             request.session.modified = True
             return render(request, 'order.html', {'order': order})
