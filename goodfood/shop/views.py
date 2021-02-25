@@ -22,18 +22,38 @@ def index(request):
     return render(request, 'index.html', context=data)
 
 
-def catalog(request, category_id=None):
+def catalog(request):
     data = get_cart(request)
-    if category_id:
-        products = Product.objects.filter(category_id=category_id)
+    if not request.GET.get('order'):
+        sort_order = '?'
     else:
-        products = Product.objects.all()
+        sort_order = request.GET.get('order')
+    products = Product.objects.all().order_by(sort_order)
+
     paginator = Paginator(products, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     data['page_obj'] = page_obj
 
     return render(request, 'catalog.html', context=data)
+
+
+def category_catalog(request, category_id=None):
+    data = get_cart(request)
+    if not request.GET.get('order'):
+        sort_order = '?'
+    else:
+        sort_order = request.GET.get('order')
+
+    products = Product.objects.filter(category_id=category_id).order_by(sort_order)
+    data['category_id'] = category_id
+
+    paginator = Paginator(products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    data['page_obj'] = page_obj
+
+    return render(request, 'category_catalog.html', context=data)
 
 
 def blog(request):

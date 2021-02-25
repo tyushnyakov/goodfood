@@ -5,7 +5,7 @@
 
 {% block content %}
         <main class="main">
-            
+
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
@@ -21,7 +21,7 @@
                         <nav class="toolbox mb-4">
                             <div class="toolbox-left">
                                 <div class="toolbox-item toolbox-sort">
-                                        <form action="{% url 'shop:catalog' %}" method="get" class="form-inline">
+                                        <form action="{% url 'shop:category_catalog' category_id %}" method="get" class="form-inline">
                                             <div class="form-group mx-sm-3">
                                                 <select name="order" class="form-control">
                                                     <option value="price" selected="selected">дешевые</option>
