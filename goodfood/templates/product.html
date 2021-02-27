@@ -86,7 +86,7 @@
                                     <div class="product-details">
                                         <div class="category-wrap">
                                             <div class="category-list">
-                                                <a href="{% url 'shop:catalog' %}" class="product-category">Каталог</a>
+                                                <a href="{% url 'shop:category_catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                             </div>
                                             <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
                                         </div>

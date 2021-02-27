@@ -200,7 +200,7 @@
                                 </figure>
                                 <div class="product-details">
                                     <div class="category-list">
-                                        <a href="{% url 'shop:catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
+                                        <a href="{% url 'shop:category_catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                     </div>
                                     <h2 class="product-title">
                                         <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
@@ -296,9 +296,9 @@
                     <li>
                         <a href="{% url 'shop:catalog' %}">КАТАЛОГ</a>
                         <ul>
-                            <li><a href="{% url 'shop:catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
-                            <li><a href="{% url 'shop:catalog' 2 %}">МЯСО-РЫБА</a></li>
-                            <li><a href="{% url 'shop:catalog' 3 %}">КОНДИТЕРСКИЕ ИЗДЕЛИЯ</a></li>
+                            <li><a href="{% url 'shop:category_catalog' 1 %}">ОВОЩИ-ФРУКТЫ</a></li>
+                            <li><a href="{% url 'shop:category_catalog' 2 %}">МЯСО-РЫБА</a></li>
+                            <li><a href="{% url 'shop:category_catalog' 3 %}">КОНДИТЕРСКИЕ ИЗДЕЛИЯ</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'shop:blog' %}">БЛОГ</a></li>
