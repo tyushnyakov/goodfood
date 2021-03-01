@@ -73,8 +73,8 @@
                             <div class="pagination">
                                <span class="step-links">
                                    {% if page_obj.has_previous %}
-                                       <a href="?page=1">&laquo; Начало|</a>
-                                       <a href="?page={{ page_obj.previous_page_number }}">Предыдущая|</a>
+                                       <a href="?page=1&order={{ sort_order }}">&laquo; Начало|</a>
+                                       <a href="?page={{ page_obj.previous_page_number }}&order={{ sort_order }}">Предыдущая|</a>
                                    {% endif %}
 
                                    <span class="current">
@@ -82,8 +82,8 @@
                                    </span>
 
                                    {% if page_obj.has_next %}
-                                       <a href="?page={{ page_obj.next_page_number }}">|Следующая</a>
-                                       <a href="?page={{ page_obj.paginator.num_pages }}">|Конец &raquo;</a>
+                                       <a href="?page={{ page_obj.next_page_number }}&order={{ sort_order }}">|Следующая</a>
+                                       <a href="?page={{ page_obj.paginator.num_pages }}&order={{ sort_order }}">|Конец &raquo;</a>
                                    {% endif %}
                                </span>
                             </div>
@@ -94,7 +94,7 @@
                         <div class="sidebar-wrapper">
                             <div class="widget">
                                 <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="{% url 'shop:catalog' %}" role="button" aria-expanded="true" aria-controls="widget-body-2">Категория</a>
+                                    <a data-toggle="collapse" href="#widget-body-2" role="button" aria-expanded="true" aria-controls="widget-body-2">Категория</a>
                                 </h3>
 
                                 <div class="collapse show" id="widget-body-2">
