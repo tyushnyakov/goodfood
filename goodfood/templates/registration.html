@@ -25,7 +25,17 @@
 
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            <div>
+                                {% for field in form %}
+                                <div class="form-group row">
+                                    <label class="col-sm-4">{{ field.label }}</label>
+                                    <div class="col-sm-8">
+                                        {{ field }}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
 
                             <div class="form-footer">
                                 <button type="submit" class="btn btn-primary">Создать учетную запись</button>

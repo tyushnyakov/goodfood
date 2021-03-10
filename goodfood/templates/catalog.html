@@ -55,7 +55,7 @@
                                             <div class="category-list">
                                                 <a href="{% url 'shop:category_catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                             </div>
-                                            <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
+
                                         </div>
                                         <h2 class="product-title">
                                             <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
@@ -73,8 +73,8 @@
                             <div class="pagination">
                                <span class="step-links">
                                    {% if page_obj.has_previous %}
-                                       <a href="?page=1&order={{ sort_order }}">&laquo; Начало|</a>
-                                       <a href="?page={{ page_obj.previous_page_number }}&order={{ sort_order }}">Предыдущая|</a>
+                                       <a href="?page=1&order={{ sort_order }}">&laquo; Начало |</a>
+                                       <a href="?page={{ page_obj.previous_page_number }}&order={{ sort_order }}">Предыдущая |</a>
                                    {% endif %}
 
                                    <span class="current">
@@ -82,8 +82,8 @@
                                    </span>
 
                                    {% if page_obj.has_next %}
-                                       <a href="?page={{ page_obj.next_page_number }}&order={{ sort_order }}">|Следующая</a>
-                                       <a href="?page={{ page_obj.paginator.num_pages }}&order={{ sort_order }}">|Конец &raquo;</a>
+                                       <a href="?page={{ page_obj.next_page_number }}&order={{ sort_order }}">| Следующая</a>
+                                       <a href="?page={{ page_obj.paginator.num_pages }}&order={{ sort_order }}">| Конец &raquo;</a>
                                    {% endif %}
                                </span>
                             </div>

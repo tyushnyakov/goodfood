@@ -70,7 +70,7 @@
                     <div class="product-panel">
                         <h2 class="section-title">ПОХОЖИЕ ТОВАРЫ</h2>
 
-                        <div class="row row-sm product-ajax-grid">
+                        <div class="row row-sm product-ajax-grid w-50">
                             {% for element in similar_products %}
                             <div class="col-6 col-md-4">
                                 <div class="product-default inner-quickview inner-icon">
@@ -81,14 +81,14 @@
                                         <div class="btn-icon-group">
                                             <a href="{% url 'shop:cart' element.id %}"><button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i></button></a>
                                         </div>
-                                        <a href="{% url 'shop:product' element.id %}" class="btn-quickview" title="Quick View">Подробнее</a>
+
                                     </figure>
                                     <div class="product-details">
                                         <div class="category-wrap">
                                             <div class="category-list">
                                                 <a href="{% url 'shop:category_catalog' element.category.id %}" class="product-category">{{ element.category }}</a>
                                             </div>
-                                            <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
+
                                         </div>
                                         <h2 class="product-title">
                                             <a href="{% url 'shop:product' element.id %}">{{ element.name }}</a>
@@ -102,7 +102,7 @@
                             {% endfor %}
                         </div>
                         
-                        <button class="btn-view-more">ЕЩЁ</button>
+                        <!--<button class="btn-view-more">ЕЩЁ</button>--!>
                     </div>
                 </div><!-- End .container -->
             </div><!-- End .featured-section -->

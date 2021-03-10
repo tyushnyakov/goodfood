@@ -52,6 +52,7 @@ def category_catalog(request, category_id=None):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     data['page_obj'] = page_obj
+    data['sort_order'] = sort_order
 
     return render(request, 'catalog.html', context=data)
 
